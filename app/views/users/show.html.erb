@@ -2,9 +2,16 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= @user.name %>
-      </h1>
+       <% if @user.avatar.exists? then %>
+        <div class="img">
+			   <%= image_tag @user.avatar.url(:thumb)%>
+        </div>
+		    <% else %>
+          <i class="icon-user"></i>
+		    <% end %>
+		    <h1>
+          <%= @user.name %>
+        </h1>
     </section>
   </aside>
 </div>

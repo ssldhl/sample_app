@@ -10,12 +10,15 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :avatar
   has_secure_password
+  has_attached_file :avatar, :styles =>{:thumb => "100x100>", :small => "50x50>" }
 
   before_save { |user| user.email = email.downcase }
 
   before_save :create_remember_token
+
+  validates_attachment :avatar, :size => { :in => 0..100.kilobytes }
   
   validates :name, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

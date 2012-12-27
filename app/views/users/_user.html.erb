@@ -1,6 +1,12 @@
 <li>
+	<% if user.avatar.exists? then %>
+    <%= image_tag user.avatar.url(:small)%>
+  <% else %>
+    <i class="icon-user"></i>
+  <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
+    | <%= check_box :user, sdfd%> Public  <br />
   <% end %>
 </li>

@@ -45,6 +45,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    cocaine (0.4.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -96,6 +97,12 @@ GEM
     mime-types (1.19)
     multi_json (1.5.0)
     nokogiri (1.5.6)
+    paperclip (3.4.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
     pg (0.12.2)
     polyglot (0.3.3)
     pry (0.9.10)
@@ -189,6 +196,7 @@ DEPENDENCIES
   guard-spork (= 0.3.2)
   jquery-rails
   libnotify (= 0.5.9)
+  paperclip (~> 3.0)
   pg (= 0.12.2)
   rails (= 3.2.3)
   rb-inotify (= 0.8.8)

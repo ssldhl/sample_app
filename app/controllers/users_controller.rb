@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
-
+  before_filter :sign_in_create, only: [:new, :create]
 	def index
     @users = User.paginate(page: params[:page])
   end
@@ -43,6 +43,13 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'edit'
+    end
+  end
+
+  private
+  def sign_in_create
+    if signed_in?
+      redirect_to root_path, notice: "You're already logged in, so you cannot create a new account."
     end
   end
 
