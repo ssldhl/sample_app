@@ -7,6 +7,8 @@
     sample application.
   </h2>
 
+  <%= collection_select(:user, :name, @users, :id, :name, options ={:prompt => "-Select a User Name", :search=>true}, :class =>"search-user") %>
+
   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
 

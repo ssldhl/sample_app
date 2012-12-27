@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
   before_filter :sign_in_create, only: [:new, :create]
-  before_filter :sign_in_users_index, only: [:index, :show]
 	def index
     @users = User.paginate(page: params[:page])
   end
@@ -44,13 +43,6 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'edit'
-    end
-  end
-
-  private
-  def sign_in_users_index
-    if signed_in?
-      redirect_to root_path, notice: "Action not allowed"
     end
   end
 
