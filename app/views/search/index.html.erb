@@ -1,0 +1,25 @@
+<div class="center hero-unit">
+  <h1>Welcome to the Sample App</h1>
+
+  <h2>
+    This is the home page for the
+    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+    sample application.
+  </h2>
+  <%= form_for(:user, :html => { :class => "form-horizontal"}) do |f| %>
+    
+    I already have a Username   
+    <%=f.select("id", User.all.collect {|u| [ u.name, u.id ] }.sort, {:prompt => 'Select a username'}, :class => 'span3')%>
+
+    and i want to
+    <%= f.submit "Sign In", class: "btn btn-large btn-primary" %>
+
+  Selected User is: <%= $name%>
+
+    <%= f.text_field :name, :placeholder => "Username", :class=>"span3" %>
+    <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
+
+  <%end%>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

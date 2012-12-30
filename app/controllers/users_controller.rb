@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
-  before_filter :sign_in_create, only: [:new, :create]
+  before_filter :sign_in_create, only: [:create]
 	def index
     @users = User.paginate(page: params[:page])
   end
@@ -23,9 +23,11 @@ class UsersController < ApplicationController
 	end
 
 	def create
+    params[:user][:name] = $new_name
     @user = User.new(params[:user])
     if @user.save
     	sign_in @user
+      $name = $new_name
     	flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
@@ -37,6 +39,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    params[:user][:name] = $name
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       sign_in @user
