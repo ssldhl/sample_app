@@ -1,5 +1,9 @@
 class SearchController < ApplicationController
 	def index
+		if signed_in?
+			@form = current_user.forms.build
+			@feed_items = current_user.feed.paginate(page: params[:page])
+		end
 	end
 
 	def create	
@@ -25,20 +29,5 @@ class SearchController < ApplicationController
 				redirect_to signup_path
 			end
 		end
-	end
-
-	def edit
-	end
-
-	def destroy
-	end
-
-	def show
-	end
-
-	def new
-	end
-
-	def update
 	end
 end

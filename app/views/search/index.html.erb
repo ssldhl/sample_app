@@ -1,3 +1,22 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/forms_form' %>
+      </section>
+    </aside>
+  </div>
+  <div class="span8">
+      <h3>Form Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+
+
 <div class="center hero-unit">
   <h1>Welcome to the Sample App</h1>
 
@@ -12,14 +31,17 @@
     <%=f.select("id", User.all.collect {|u| [ u.name, u.id ] }.sort, {:prompt => 'Select a username'}, :class => 'span3')%>
 
     and i want to
-    <%= f.submit "Sign In", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Sign In", class: "btn btn-large btn-primary" %> <br /> <br />
 
-  Selected User is: <%= $name%>
-
+    I am a new user. I want to select a 
     <%= f.text_field :name, :placeholder => "Username", :class=>"span3" %>
+
+    and 
     <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
 
   <%end%>
 </div>
 
 <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+
+<% end %>

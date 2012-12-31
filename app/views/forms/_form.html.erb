@@ -1,0 +1,13 @@
+<li>
+  <span class="content">
+  	<%= form.name %>
+  	<%= form.dob%>
+  	<%= form.address%>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(form.created_at) %> ago.
+  </span>
+  <% if current_user?(form.user) %>
+    <%= link_to "delete", form, method:  :delete, confirm: "You sure?", title: form.name %>
+  <% end %>
+</li>
