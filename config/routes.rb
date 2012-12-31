@@ -1,7 +1,8 @@
 SampleApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :search
+  resources :search, only: [:create, :index]
+  resources :forms, only: [:create, :destroy]
 
   root :to => 'search#index'
 

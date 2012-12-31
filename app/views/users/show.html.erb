@@ -14,4 +14,13 @@
         </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.forms.any? %>
+      <h3>Forms (<%= @user.forms.count %>)</h3>
+      <ol class="forms">
+        <%= render @forms %>
+      </ol>
+      <%= will_paginate @forms %>
+    <% end %>
+  </div>
 </div>
